@@ -28,7 +28,6 @@ const NewsComponent =(props)=> {
         let data = await fetch(url);
         let parsedData = await data.json();
         props.setProgress(60)
-        console.log(parsedData);
 
         setarticles(parsedData.articles)
         settotalResults(parsedData.totalResults)
@@ -37,23 +36,8 @@ const NewsComponent =(props)=> {
     };
     useEffect(() => {
         updateNews();
-        console.log("hello cdm");
       }, []);
 
-    // handleNextBut = async () => {
-    //     console.log("next")
-    //     setState({
-    //         page: state.page + 1
-    //     })
-    //     updateNews();
-    // }
-    // handlePrevBut = async () => {
-    //     console.log("prev")
-    //     setState({
-    //         page: state.page - 1
-    //     })
-    //     updateNews();
-    // }
 
     const fetchMoreData = async () => {
         let url = `https://newsapi.org/v2/top-headlines?country=${props.country
@@ -63,7 +47,6 @@ const NewsComponent =(props)=> {
         // setloading(true)
         let data = await fetch(url);
         let parsedData = await data.json();
-        console.log(parsedData);
 
         setarticles(articles.concat(parsedData.articles))
         settotalResults(parsedData.totalResults)
